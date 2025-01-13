@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopaholic</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body >
+  
+  <div class="fixed top-0 w-full text-zinc-700 " >
+    <div class="w-full flex gap-4 bg-[#FFFFFF] justify-end mr-4 ">
+      <form method="POST" action="/search" class="mt-2 mr-10">
+        <input class="mb-2 text-sm bg-zinc-100 rounded-md w-80 border-2" placeholder="SHOP" name="textgiven" >
+        <button type="submit" class="text-sm rounded-sm ">⌕</button>
+      </form>
+      <a class="mt-2" href="/shop">Shop</a>
+      <a class="mt-2" href="/vieworders">My Orders🛍️</a>
+      <a class="mt-2" href="/cart">Cart🛒</a>
+      <a class="mt-2 text-red-700 mr-2" href="/users/logout" >Logout</a>
+    </div >
+    
+    <div class="bg-[#FFFFFF] flex justify-end gap-10">
+  
+      <div class="w-1/8">
+        <h1>Men</h1>
+      </div>
+      <div class=" w-1/8">
+        <h1 class="ml-2">Women</h1>
+      </div>
+      <div class="w-1/8">
+        <h1 class="ml-2">Women's Dresses</h1>
+      </div>
+      <div class="w-1/8">
+        <h1 class="ml-2">Women's Skirts</h1>
+      </div>
+      <div class="w-1/8">
+        <h1 class="ml-2">Women's Pants</h1>
+      </div>
+      <div class="w-1/8">
+        <h1 class="ml-2">Women's Tops</h1>
+      </div>
+      <div class="w-1/8">
+        <h1 class="ml-2">Men's Shirt</h1>
+      </div>
+      <div class="w-1/8">
+        <h1 class="ml-2 mr-2">Men's T-Shirts</h1>
+      </div>
+      <div class="w-1/8">
+        <h1 class="ml-2 mr-2">Men's Pants</h1>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <div class="w-full min-h-screen flex justify-start gap-4 ">
+
+    <div class="bg-[#FFFFFF] fixed top-0 w-1/6 h-full ">
+      <h1 class="mt-12 text-2xl font-bold font-mono ml-12">Shopaholic</h1>
+      <div class="flex flex-col gap-2 ml-14 mt-14">
+        <label for="selecting">Select By</label>
+        <div class="">
+          <select onchange="location=this.value" class="w-40" name="category">
+          <option value="default">Category</option>
+          <option value="?category=All">All</option>
+          <option value="?category=Dress">Dress</option>
+          <option value="?category=Top">Tops</option>
+          <option value="?category=Skirt">Skirts</option>
+          <option value="?category=Pant">Pants</option>
+          </select>
+        </div>
+        <div class="">
+          <select onchange="location=this.value" class="w-40" name="gender">
+          <option value="default">Gender</option>
+          <option value="?gender=None">None</option>
+          <option value="?gender=Women">Women</option>
+          <option value="?gender=Men">Men</option>
+          </select>
+        </div>
+        <div class="">
+          <select onchange="location=this.value" class="w-40" name="price">
+            <option value="">Price</option>
+            <option value="?price=None">None</option>
+            <option value="?price=1000">Under 1000</option>
+            <option value="?price=2000">Under 2000</option>
+            <option value="?price=3000">Under 3000</option>
+            </select>
+        </div>
+        <div class="">
+          <select onchange="location=this.value" class="w-40" name="discount">
+            <option value="default">Discount</option>
+            <option value="?discount=None">None</option>
+            <option value="?discount=10">More than 10%</option>
+            <option value="?discount=20">More than 20%</option>
+            <option value="?discount=30">More than 30%</option>
+            </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="ml-64 w-5/6 mt-14">
+      <div class="">
+        <h2 class=" mt-14 ml-6 text-3xl">Products For You</h2>
+        <h3 class="ml-6"> <%= products.length %> Products </h3>
+        <div class="mt-8 ml-16 flex gap-10 flex-wrap justify-start">
+        
+        <% products.forEach(function(product){ %>
+          <div class="w-70 rounded-lg border">
+            <a href="/show/<%= product._id %>">
+              <div class="flex items-center justify-center rounded-lg">
+                <img class="w-full h-60 rounded-md" src="data:image/jpeg;base64,<%= product.image.toString('base64') %>">
+              </div>
+            </a>
+            <div class="text-[#3E2723] text-xs
+             flex flex-col gap-2 ">
+                <h5 class="ml-2"><%= product.name %></h5>
+                <h5 class="ml-2">₹<%= product.price %></h5>
+                <h5 class="ml-2"><%= product.discount %>% discount</h5>
+                <div class="ml-2 flex gap-16 justify-start">
+                  <a href="/addtocart/<%= product._id %>"><button  class="bg-zinc-200  rounded hover:bg-blue-700" type="submit">Add to cart🛒</button></a>
+                  <a href="/placeorder/<%= product._id %>"><button  class="ml-5 mr-1 bg-zinc-200 rounded hover:bg-blue-700 " type="submit">Place order</button></a>
+                </div>
+                <h2></h2>
+            </div>
+          </div>
+        <% }) %>
+        
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

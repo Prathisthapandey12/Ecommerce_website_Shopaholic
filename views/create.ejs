@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdminPanel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body >
+    <div >
+        <h1 class = "mt-8 text-3xl font-semibold  text-center" >Admin panel</h1>
+        <div class="flex  justify-center gap-10 w-full p-10 text-center">
+            <div class="mt-12 w-1/2 rounded-lg bg-zinc-100 p-4">
+                <h3 class=" font-semibold mt-2">Create the product</h3>
+                <form class="text-sm flex justify-start mt-8 gap-4" action="/owners/admin" method="post" enctype="multipart/form-data">
+                    <div class="ml-8 flex flex-col gap-2">
+                        <div>
+                         <label class="font-semibold" for="image">Upload Product's Image</label>
+                        </div>
+                        <div>
+                         <label class="font-semibold" for="name">Product Name</label>
+                        </div>
+                        <div>
+                         <label class="font-semibold" for="name">Product Price</label>
+                        </div>
+                        <div>
+                         <label class="font-semibold" for="name">Discount Offered</label>
+                        </div>
+                        <div>
+                         <label class="font-semibold" for="name">Gender</label>
+                        </div>
+                        <div>
+                         <label class="font-semibold" for="name">Product Category</label>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2"> 
+                        <div>
+                         <input class="w-60" name ="image" type="file" >
+                        </div>
+                        <div>
+                         <input class="rounded-lg w-60" name ="name" class="block rounded-lg px-5 py-2 bg-zinc-800 mt-2" type="text" placeholder=" name" >
+                        </div>
+                        <div>
+                         <input class="rounded-lg w-60" name ="price" class="block rounded-lg px-5 py-2 bg-zinc-800 mt-2" type="text" placeholder=" price" >
+                        </div>
+                        <div>
+                         <input class="rounded-lg w-60" name ="discount" class="block rounded-lg px-5 py-2 bg-zinc-800 mt-2" type="text" placeholder=" discount" >
+                        </div>
+                        <div>
+                         <input class="rounded-lg w-60" name ="gender" class="block rounded-lg px-5 py-2 bg-zinc-800 mt-2" type="text" placeholder=" gender" >
+                        </div>
+                        <div>
+                         <input class="rounded-lg w-60" name ="category" class="block rounded-lg px-5 py-2 bg-zinc-800 mt-2" type="text" placeholder=" category" >
+                        </div>
+                        <div>
+                         <input class="mt-5 bg-blue-700 px-5 py-2 rounded-md w-40" type="submit" value="Create Product">
+                        </div>
+                    </div>
+                </form>
+            </div>
+    
+            <div class="w-1/2 mt-12 rounded-lg bg-zinc-100 p-4">
+                <h3 class=" font-semibold mt-2">Delete the product</h3>
+                <form class="text-sm flex justify-start mt-14 gap-2" action="/owners/delete" method="post" >
+                    <div class="ml-8 flex flex-col gap-2">
+                        <div>
+                            <label class="font-semibold" for="name">Product Id</label>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2"> 
+                        <div>
+                            <input class="rounded-lg w-60" name ="id" class="block rounded-lg px-5 py-2 bg-zinc-800 mt-2" type="text" placeholder=" product id" >
+                        </div>
+                        <div>
+                         <input class="mt-5 bg-red-600 px-5 py-2 rounded-md w-40" type="submit" value="Delete Product">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
